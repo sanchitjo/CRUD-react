@@ -35,7 +35,7 @@ function CreateUser() {
                     <div className='row'>
                         <div className='col-lg-8'>
                             <label>User Name</label>
-                            <input type="text" value={userName} onChange={(e) => {setUserName(e.target.value)}} className='form-control' />
+                            <input type="text" value={userName} onChange={(e) => {setUserName(e.target.value)}} className='form-control' required />
                         </div>
                         <div className='col-lg-4'>
                             <label>Age</label>

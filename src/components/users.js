@@ -8,6 +8,15 @@ function Users() {
 
     const userContext = useContext(MyProvider)
     console.log("userList", userContext);
+    
+
+    let handleDelete = ((index) => {
+        let check = window.confirm("Are you sure?");
+        if(check) {
+            userContext.userList.splice(index-1, 1);
+            userContext.setUserList([...userContext.userList]);
+        }
+    })
         return (
         
         <div>
@@ -66,7 +75,7 @@ function Users() {
                                             <td>{obj.salary}</td>
                                             <td>
                                                 <Link to={`/users/edit/${index + 1}`} className="btn btn-primary btn-sm">Edit</Link>
-                                                <Link to={`/users/edit/${index + 1}`} className="btn btn-danger btn-sm ml-1">Delete</Link>
+                                                <button onClick={() => {handleDelete(index + 1)}} className="btn btn-danger btn-sm ml-1">Delete</button>
                                             </td>
                                         </tr>)
                                     })
