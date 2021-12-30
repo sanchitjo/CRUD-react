@@ -58,7 +58,7 @@ function CreateUser() {
                             <input type="date" value={startdate} onChange={(e) => {setStartdate(e.target.value)}} className='form-control' />
                         </div>
                         <div className='col-lg-12'>
-                            <input type='submit' value='submit' className='btn btn-outline-success mt-2' />
+                            <input type='submit' value='submit' className='btn btn-primary mt-2' />
                         </div>
 
                     </div>

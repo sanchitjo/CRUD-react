@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { MyProvider } from "./userContext";
@@ -8,19 +8,19 @@ function Users() {
 
     const userContext = useContext(MyProvider)
     console.log("userList", userContext);
-    
+
 
     let handleDelete = ((index) => {
         let check = window.confirm("Are you sure?");
-        if(check) {
-            userContext.userList.splice(index-1, 1);
+        if (check) {
+            userContext.userList.splice(index - 1, 1);
             userContext.setUserList([...userContext.userList]);
         }
     })
-        return (
-        
+    return (
+
         <div>
-            
+
             <h1 className="h3 mb-2 text-gray-800">Users</h1>
             <p className="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                 For more information about DataTables, please visit the <a target="_blank"
@@ -48,25 +48,14 @@ function Users() {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
+
                             <tbody>
 
                                 {
                                     userContext.userList.map((obj, index) => {
-                                        
+
                                         return (< tr >
-                                            <td>{index+ 1}</td>
+                                            <td>{index + 1}</td>
                                             <td>{obj.userName}</td>
                                             <td>{obj.position}</td>
                                             <td>{obj.office}</td>
@@ -75,7 +64,7 @@ function Users() {
                                             <td>{obj.salary}</td>
                                             <td>
                                                 <Link to={`/users/edit/${index + 1}`} className="btn btn-primary btn-sm">Edit</Link>
-                                                <button onClick={() => {handleDelete(index + 1)}} className="btn btn-danger btn-sm ml-1">Delete</button>
+                                                <button onClick={() => { handleDelete(index + 1) }} className="btn btn-danger btn-sm ml-1">Delete</button>
                                             </td>
                                         </tr>)
                                     })

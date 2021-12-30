@@ -15,6 +15,7 @@ import {
 
 } from "react-router-dom";
 import { UserProvider } from './components/userContext';
+import { ProductProvider } from './components/productContext';
 
 
 
@@ -22,6 +23,7 @@ import { UserProvider } from './components/userContext';
 const App = () => {
   return (
     <UserProvider>
+      <ProductProvider>
       <BrowserRouter>
         <div id="wrapper">
           <Sidebar />
@@ -52,6 +54,7 @@ const App = () => {
           </div>
         </div>
       </BrowserRouter>
+      </ProductProvider>
     </UserProvider>
 
 

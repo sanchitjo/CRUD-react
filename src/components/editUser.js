@@ -69,7 +69,7 @@ function EditUser(props) {
                     <div className='row'>
                         <div className='col-lg-8'>
                             <label>User Name</label>
-                            <input type="text" value={userName} onChange={(e) => {setUserName(e.target.value)}} className='form-control'required />
+                            <input type="text" value={userName} onChange={(e) => {setUserName(e.target.value)}} className='form-control' required />
                         </div>
                         <div className='col-lg-4'>
                             <label>Age</label>
@@ -92,7 +92,7 @@ function EditUser(props) {
                             <input type="date" value={startdate} onChange={(e) => {setStartdate(e.target.value)}} className='form-control' />
                         </div>
                         <div className='col-lg-12'>
-                            <input type='submit' value='update' className='btn btn-outline-success mt-2' />
+                            <input type='submit' value='update' className='btn btn-primary mt-2' />
                         </div>
 
                     </div>

@@ -1,18 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { YourProvider } from "./productContext";
 
 function Product() {
 
-    let productData = [{
-        id: 1,
-        name: "Person 1",
-        position: "SDE 1",
-        office: "California LA",
-        age: 31,
-        startDate: "14 Dec 2021",
-        salary: "$100k"
+    const productContext = useContext(YourProvider);
+    console.log("productList", productContext);
+
+    let handleDelete = (index) => {
+        let check = window.confirm("you sure?");
+        if (check) {
+            productContext.productList.splice(index - 1, 1);
+            productContext.setproductList([...productContext.productList]);
+        }
     }
-    ]
 
     return (
         <div>
@@ -33,38 +35,31 @@ function Product() {
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>ID</th>
+                                    <th>Product Name</th>
+                                    <th>Purpose</th>
+                                    <th>Made in</th>
+                                    <th>Available in</th>
+                                    <th>Launch date</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                            </tfoot>
+
                             <tbody>
                                 {
-                                    productData.map((obj) => {
+                                    productContext.productList.map((obj, index) => {
                                         return (<tr>
-                                            <td>{obj.id}</td>
-                                            <td>{obj.name}</td>
-                                            <td>{obj.position}</td>
-                                            <td>{obj.office}</td>
-                                            <td>{obj.age}</td>
-                                            <td>{obj.startDate}</td>
-                                            <td>{obj.salary}</td>
+                                            <td>{index + 1}</td>
+                                            <td>{obj.productName}</td>
+                                            <td>{obj.purpose}</td>
+                                            <td>{obj.madeIn}</td>
+                                            <td>{obj.availableIn}</td>
+                                            <td>{obj.launchDate}</td>
+                                            <td>{obj.price}</td>
                                             <td>
-                                                <Link to={`/product/edit/${obj.id}`} className="btn btn-primary btn-sm">Edit</Link>
-                                                <Link to={`/product/edit/${obj.id}`} className="btn btn-danger btn-sm">Delete</Link>
+                                                <Link to={`/product/edit/${index + 1}`} className="btn btn-primary btn-sm">Edit</Link>
+                                                <button onClick={() => { handleDelete(index + 1) }} className="btn btn-danger btn-sm ml-1">Delete</button>
                                             </td>
                                         </tr>)
                                     })

@@ -12,7 +12,7 @@ export const UserProvider = ({children}) => {
         setUserList(x)
     })
     return(
-        <UserContext.Provider value={{userList, setUserList:a}}>
+        <UserContext.Provider value={{userList, setUserList:a}}> 
             {children}
         </UserContext.Provider>
     )
